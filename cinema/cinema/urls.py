@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from reviews.views import ActorAPIView, BiographyAPIView, HeroAPIView, CinemaAPIView, ReviewAPIView
 from user.views import UserAPIView
 
 router = DefaultRouter()
 router.register(r'users', UserAPIView)
+router.register(r'actors', ActorAPIView),
+router.register(r'biography', BiographyAPIView),
+router.register(r'hero', HeroAPIView),
+router.register(r'cinema', CinemaAPIView)
+router.register(r'review', ReviewAPIView)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
