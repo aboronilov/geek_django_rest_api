@@ -2,9 +2,9 @@ import React from "react";
 import styles from './UserItem.module.css'
 
 export default function UserItem({ users }) {
-  const DisplayData = users.map((user) => {
+  const DisplayData = users.map((user, i) => {
     return (
-      <tr>
+      <tr key={i}>
         <td>{user.firstname}</td>
         <td>{user.lastname}</td>
         <td>{user.username}</td>

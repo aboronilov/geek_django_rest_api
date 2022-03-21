@@ -10,5 +10,5 @@ from .serializers import UserSerializer
 
 
 class UserAPIView(ModelViewSet):
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by('uid')
     serializer_class = UserSerializer

@@ -8,7 +8,7 @@ from .serializers import ActorSerializer, BiographySerializer, HeroSerializer, C
 
 
 class ActorAPIView(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
-    queryset = Actor.objects.all()
+    queryset = Actor.objects.all().order_by('id')
     serializer_class = ActorSerializer
 
     def get_queryset(self):
@@ -20,18 +20,18 @@ class ActorAPIView(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.Gene
 
 
 class ActorViewSet(ModelViewSet):
-    queryset = Actor.objects.all()
+    queryset = Actor.objects.all().order_by('id')
     serializer_class = ActorSerializer
     filterset_fields = ['name', 'birthday_year']
 
 
 class BiographyAPIView(ModelViewSet):
-    queryset = Biography.objects.all()
+    queryset = Biography.objects.all().order_by('id')
     serializer_class = BiographySerializer
 
 
 class HeroAPIView(ModelViewSet):
-    queryset = Hero.objects.all()
+    queryset = Hero.objects.all().order_by('id')
     serializer_class = HeroSerializer
 
 
@@ -40,13 +40,13 @@ class CinemaLimitOffsetPagination(LimitOffsetPagination):
 
 
 class CinemaAPIView(ModelViewSet):
-    queryset = Cinema.objects.all()
+    queryset = Cinema.objects.all().order_by('id')
     serializer_class = CinemaSerializer
     pagination_class = CinemaLimitOffsetPagination
 
 
 class ReviewAPIView(ModelViewSet):
-    queryset = Review.objects.all()
+    queryset = Review.objects.all().order_by('id')
     serializer_class = ReviewSerializer
 
 
