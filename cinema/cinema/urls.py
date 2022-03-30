@@ -22,11 +22,11 @@ from reviews.views import ActorAPIView, BiographyAPIView, HeroAPIView, CinemaAPI
 from user.views import UserAPIView
 
 router = DefaultRouter()
-router.register(r'users', UserAPIView)
-router.register(r'actors', ActorViewSet),
+router.register(r'users', UserAPIView, basename='users')
+router.register(r'actors', ActorViewSet, basename='actors'),
 router.register(r'biography', BiographyAPIView),
 router.register(r'hero', HeroAPIView),
-router.register(r'cinema', CinemaAPIView)
+router.register(r'cinema', CinemaAPIView, basename='cinema')
 router.register(r'review', ReviewAPIView)
 
 
