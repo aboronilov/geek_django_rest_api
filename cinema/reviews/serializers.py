@@ -10,6 +10,12 @@ class ActorSerializer(serializers.ModelSerializer):
         exclude = ['id']
 
 
+class ActorSerializerFull(serializers.ModelSerializer):
+    class Meta:
+        model = Actor
+        fields = '__all__'
+
+
 class BiographySerializer(serializers.ModelSerializer):
     actor = ActorSerializer()
 
