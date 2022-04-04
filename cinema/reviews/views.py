@@ -4,7 +4,8 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Actor, Biography, Hero, Cinema, Review
-from .serializers import ActorSerializer, BiographySerializer, HeroSerializer, CinemaSerializer, ReviewSerializer
+from .serializers import ActorSerializer, BiographySerializer, HeroSerializer, CinemaSerializer, ReviewSerializer, \
+    ActorSerializerFull
 
 
 class ActorAPIView(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -23,6 +24,11 @@ class ActorViewSet(ModelViewSet):
     queryset = Actor.objects.all().order_by('id')
     serializer_class = ActorSerializer
     filterset_fields = ['name', 'birthday_year']
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return ActorSerializerFull
+        return ActorSerializer
 
 
 class BiographyAPIView(ModelViewSet):
